@@ -1,0 +1,21 @@
+body{
+    background-color: #222222;
+}
+.form-design{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#form-login{
+    width:175px;
+    margin-top:10%;
+    color:white;
+    border:1px solid grey;
+    padding:50px;
+}
+.form-login-input{
+    padding:5px;
+    margin-bottom: 10px;
+    margin-top:10px;
+    width:165px;
+}
