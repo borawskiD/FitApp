@@ -1,4 +1,4 @@
-package pl.borawski.fitapp;
+package pl.borawski.fitapp.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +14,7 @@ class SecurityConfiguration {
                 .requestMatchers("/img/**", "/css/**").permitAll()
                 .anyRequest().authenticated()
         );
+        http.headers().frameOptions().disable();
         http.formLogin(login -> login.loginPage("/login").permitAll());
         http.csrf().disable();
         return http.build();
