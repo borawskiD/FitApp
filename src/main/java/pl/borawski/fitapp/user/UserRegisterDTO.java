@@ -1,13 +1,6 @@
 package pl.borawski.fitapp.user;
 
-import jakarta.persistence.*;
-
-@Entity
-@Table(name = "application_user")
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public class UserRegisterDTO {
     private String mail;
     private String password;
     private String name;
@@ -79,13 +72,5 @@ public class User {
 
     public void setActivityLevel(String activityLevel) {
         this.activityLevel = activityLevel;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
     }
 }

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register new user</title>
+    <link rel="stylesheet" th:href="@{/css/register-style.css}" href="/css/register-style.css" />
+</head>
+<body>
+<header>Fitness assistant</header>
+<section id="register">
+    <h1>Register new user</h1>
+    <form method="post" action="#" th:action="@{/register}" th:object="${user}" >
+        <label>
+            Name:
+            <input th:field="*{name}"  type="text" placeholder="Name"/>
+        </label>
+        <label>
+            Mail:
+            <input th:field="*{mail}"  type="text" placeholder="user@example.com"/>
+        </label>
+        <label>
+            Password:
+            <input th:field="*{password}"  type="password" placeholder="Password"/>
+        </label>
+        <label>
+            Weight:
+            <input th:field="*{weight}"  type="text"  placeholder="Weight"/>
+        </label>
+        <label>
+            Height:
+            <input th:field="*{height}"  type="text"  placeholder="Height"/>
+        </label>
+        <label>
+            Gender:
+            <input th:field="*{gender}"  type="text"  placeholder="Gender"/>
+        </label>
+        <label>
+            <br />Birth date:
+            <input th:field="*{birthDate}"  type="date" placeholder="Birth date"/>
+        </label>
+        <label>
+            Activity level:
+            <input th:field="*{activityLevel}"  type="text"  placeholder="0 - 10"/>
+        </label>
+        <button id="register-button">Register</button>
+    </form>
+</section>
+
+</body>
+</html>
