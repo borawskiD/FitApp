@@ -6,7 +6,7 @@ header{
     color:white;
 }
 label{
-    margin-top:15px;
+    margin-top:20px;
 }
 input{
     width:200px;
@@ -15,7 +15,7 @@ input{
 }
 #register{
     text-align: center;
-    width:250px;
+    width:260px;
     margin-left:auto;
     margin-right:auto;
     border:3px solid black;

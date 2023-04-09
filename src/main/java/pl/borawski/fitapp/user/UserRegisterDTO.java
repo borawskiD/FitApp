@@ -1,13 +1,29 @@
 package pl.borawski.fitapp.user;
 
+import jakarta.validation.constraints.*;
+import pl.borawski.fitapp.config.Unique;
+
+import java.time.LocalDate;
+
 public class UserRegisterDTO {
+    @Email(message = "Put full mail address")
+    @NotEmpty(message = "Field cannot be empty")
+    @Unique(message = "This e-mail has been already connected with other account. Try to log in or use other")
     private String mail;
+    @Size(min=8, max = 50, message = "Length of this field must be between 8 and 50 characters")
     private String password;
+    @Size(min=2, max = 30, message = "Length of this field must be between 2 and 30 characters")
     private String name;
-    private String birthDate;
+    @Past(message = "Date should be in the past :-)")
+    @NotNull(message = "Choose correct date!")
+    private LocalDate birthDate;
+    @Positive(message = "Weight must be above 0")
     private double weight;
+    @Positive(message = "Height must be above 0")
     private double height;
+    @NotEmpty
     private String Gender;
+    @Size(min=1, max = 10)
     private String activityLevel;
 
     public String getMail() {
@@ -34,11 +50,11 @@ public class UserRegisterDTO {
         this.name = name;
     }
 
-    public String getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(String birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 

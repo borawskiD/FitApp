@@ -14,34 +14,54 @@
             Name:
             <input th:field="*{name}"  type="text" placeholder="Name"/>
         </label>
+        <p th:errors="*{name}" class="error">Name errors will be placed here</p>
         <label>
+            <br />
             Mail:
+            <br />
             <input th:field="*{mail}"  type="text" placeholder="user@example.com"/>
         </label>
+        <p th:errors="*{mail}" class="error">Mail errors will be placed here</p>
         <label>
             Password:
             <input th:field="*{password}"  type="password" placeholder="Password"/>
         </label>
+        <p th:errors="*{password}" class="error">Password errors will be placed here</p>
         <label>
             Weight:
             <input th:field="*{weight}"  type="text"  placeholder="Weight"/>
         </label>
+        <p th:errors="*{weight}" class="error">Weight errors will be placed here</p>
         <label>
             Height:
             <input th:field="*{height}"  type="text"  placeholder="Height"/>
         </label>
+        <p th:errors="*{height}" class="error">Height errors will be placed here</p>
         <label>
             Gender:
-            <input th:field="*{gender}"  type="text"  placeholder="Gender"/>
+            <br />
+            <select th:field="*{gender}">
+                <option th:value="'M'" th:text="Male"></option>
+                <option th:value="'F'" th:text="Female"></option>
+            </select>
         </label>
+        <p th:errors="*{gender}" class="error">Gender errors will be placed here</p>
         <label>
             <br />Birth date:
-            <input th:field="*{birthDate}"  type="date" placeholder="Birth date"/>
+            <br /> <input th:field="*{birthDate}"  type="date" placeholder="Birth date"/>
         </label>
+        <p th:errors="*{birthDate}" class="error">Date errors will be placed here</p>
         <label>
             Activity level:
-            <input th:field="*{activityLevel}"  type="text"  placeholder="0 - 10"/>
+            <select th:field="*{activityLevel}">
+                <option th:value="0" th:text="'No activity'"></option>
+                <option th:value="1" th:text="'Light activity (sport 1 - 3 times per week)'"></option>
+                <option th:value="2" th:text="'Moderate activity (sport 3-5 times per week)'"></option>
+                <option th:value="3" th:text="'High activity (sport everyday)'"></option>
+                <option th:value="4" th:text="'Extreme activity (professional athlete)'"></option>
+            </select>
         </label>
+        <p th:errors="*{activityLevel}" class="error">Activity errors will be placed here</p>
         <button id="register-button">Register</button>
     </form>
 </section>

@@ -4,6 +4,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
@@ -23,17 +24,6 @@ public class UserService {
 
     @Transactional
     public void register(UserRegisterDTO registration) {
-
-//        private String mail;
-//        private String name;
-//        private String password;
-//        private String birthDate;
-//        private double weight;
-//        private double height;
-//        private String Gender;
-//        private String activityLevel;
-
-
         User user = new User();
         user.setName(registration.getName());
         user.setMail(registration.getMail());
@@ -44,6 +34,7 @@ public class UserService {
         user.setHeight(registration.getHeight());
         user.setGender(registration.getGender());
         user.setActivityLevel(registration.getActivityLevel());
+        user.setRegistrationDate(LocalDateTime.now());
         userRepository.save(user);
     }
 

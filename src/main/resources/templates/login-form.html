@@ -18,7 +18,11 @@
             <input name="password" class="form-login-input" type="password" placeholder="Type your password here">
         </label>
         <button class="form-login-input" type="submit">Log in</button>
+        <div th:if="${registerSuccess}">
+            <p id="success" th:text="'' + ${registerSuccess}">
+        </div>
     </form>
+
 </section>
 </body>
 </html>

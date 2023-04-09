@@ -1,6 +1,10 @@
 package pl.borawski.fitapp.user;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "application_user")
@@ -8,14 +12,24 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(unique = true)
     private String mail;
     private String password;
     private String name;
-    private String birthDate;
+    private LocalDate birthDate;
     private double weight;
     private double height;
     private String Gender;
     private String activityLevel;
+    private LocalDateTime registrationDate;
+
+    public LocalDateTime getRegistrationDate() {
+        return registrationDate;
+    }
+
+    public void setRegistrationDate(LocalDateTime registrationDate) {
+        this.registrationDate = registrationDate;
+    }
 
     public String getMail() {
         return mail;
@@ -41,11 +55,11 @@ public class User {
         this.name = name;
     }
 
-    public String getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(String birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 

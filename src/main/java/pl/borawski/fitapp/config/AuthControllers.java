@@ -1,11 +1,18 @@
 package pl.borawski.fitapp.config;
 
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.borawski.fitapp.user.UserRegisterDTO;
 import pl.borawski.fitapp.user.UserService;
+
+import java.util.List;
+
 @Controller
 public class AuthControllers {
     private UserService userService;
@@ -28,9 +35,22 @@ public class AuthControllers {
         model.addAttribute("user", user);
         return "register-form";
     }
-    @PostMapping("/register")
-    String register(UserRegisterDTO userRegisterDTO) {
-        userService.register(userRegisterDTO);
-        return "redirect:/login";
+
+    @PostMapping( "/register")
+    public String registerSend(@Valid @ModelAttribute("user") UserRegisterDTO userRegisterDTO, BindingResult bindingResult, Model model){
+        if (bindingResult.hasErrors()){
+            List<ObjectError> errors = bindingResult.getAllErrors();
+            for (ObjectError error : errors) {
+                System.out.println(error);
+            }
+            return "register-form";
+        }else{
+            userService.register(userRegisterDTO);
+            model.addAttribute("registerSuccess", "Successfully registered new user. Let's log in!");
+        }
+
+        return "login-form";
     }
+
+
 }
