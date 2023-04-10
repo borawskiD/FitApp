@@ -2,29 +2,48 @@ package pl.borawski.fitapp.user;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
+import pl.borawski.fitapp.data.HealthDataEntity;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "application_user")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(unique = true)
     private String mail;
     private String password;
     private String name;
     private LocalDate birthDate;
-    private double weight;
-    private double height;
-    private String Gender;
-    private String activityLevel;
     private LocalDateTime registrationDate;
+    @OneToMany(mappedBy = "user")
+    private List<HealthDataEntity> healthData = new ArrayList<>();
+
+    public User(String mail, String password, String name, LocalDate birthDate, LocalDateTime registrationDate) {
+        this.mail = mail;
+        this.password = password;
+        this.name = name;
+        this.birthDate = birthDate;
+        this.registrationDate = registrationDate;
+    }
+    public User(){
+    }
 
     public LocalDateTime getRegistrationDate() {
         return registrationDate;
+    }
+
+    public List<HealthDataEntity> getHealthData() {
+        return healthData;
+    }
+
+    public void setHealthData(List<HealthDataEntity> healthData) {
+        this.healthData = healthData;
     }
 
     public void setRegistrationDate(LocalDateTime registrationDate) {
@@ -61,38 +80,6 @@ public class User {
 
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
-    }
-
-    public double getWeight() {
-        return weight;
-    }
-
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
-
-    public double getHeight() {
-        return height;
-    }
-
-    public void setHeight(double height) {
-        this.height = height;
-    }
-
-    public String getGender() {
-        return Gender;
-    }
-
-    public void setGender(String gender) {
-        Gender = gender;
-    }
-
-    public String getActivityLevel() {
-        return activityLevel;
-    }
-
-    public void setActivityLevel(String activityLevel) {
-        this.activityLevel = activityLevel;
     }
 
     public void setId(Long id) {

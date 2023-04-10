@@ -21,6 +21,9 @@
         <div th:if="${registerSuccess}">
             <p id="success" th:text="'' + ${registerSuccess}">
         </div>
+        <div th:if="${param.error}" class="error">
+            Invalid username and/or password.
+        </div>
     </form>
 
 </section>

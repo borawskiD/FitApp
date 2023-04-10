@@ -18,7 +18,7 @@ class SecurityConfiguration {
                 .anyRequest().authenticated()
         );
         http.headers().frameOptions().disable();
-        http.formLogin(login -> login.loginPage("/login").permitAll());
+        http.formLogin(login -> login.loginPage("/login").permitAll().failureUrl("/login?error=true"));
         http.csrf().disable();
         return http.build();
     }
