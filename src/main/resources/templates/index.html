@@ -3,9 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <title>Hello</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <link rel="stylesheet" th:href="@{/css/control-panel.css}" />
 </head>
 <body>
-Hello world
+
+<div class="container">
+    <section id="leftSide" th:if="${UserData}">
+        <div id="currentData">
+            <div id="topInformation">
+                <div id="genderInformation" class="personalInformation" th:text="${UserData.gender}">Male</div>
+                <div id="heightInformation" class="personalInformation" th:text="${UserData.height} + 'cm'">193cm</div>
+                <div id="weightInformation" class="personalInformation" th:text="${UserData.weight}+'kg'">100kg</div>
+            </div>
+            <div id="progress">
+                <div id="weeklyProgress" class="personalInformation"  th:text="'Weekly: '+${UserData.weeklyProgress} + '%'" >Weekly: +0.5%</div>
+                <div id="totalProgress" class="personalInformation" th:text="'Total: '+${UserData.totalProgress}+'%'">Total: +0.5%</div>
+            </div>
+            <div id="bodyStats">
+                <div id="bmi" class="personalInformation" th:text="'BMI: '+${UserData.bmi}">23.4</div>
+                <div id="bmr" class="personalInformation" th:text="'BMR: '+${UserData.bmr} + 'kcal'">2137.69kcal</div>
+            </div>
+        </div>
+        <div id="calendar">
+            //calendar will be here
+        </div>
+    </section>
+    <section id="rightSide">
+        <header id="setNavbar">
+            <div id="namePreview">
+                <form id="chooseSet">
+                    <select>
+                        <option>Set 1</option>
+                    </select>
+                    <button>Preview</button>
+                </form>
+
+            </div>
+            <button id="add">+</button>
+        </header>
+        <table>
+            <thead>
+            <th>Name</th>
+            <th>1 series</th>
+            <th>Weight</th>
+            <th>2 series</th>
+            <th>Weight</th>
+            <th>3 series</th>
+            <th>Weight</th>
+            <th>4 series</th>
+            <th>Weight</th>
+            <th>5 series</th>
+            <th>Weight</th>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Biceps</td>
+                <td>15</td>
+                <td>12</td>
+                <td>15</td>
+                <td>12</td>
+                <td>15</td>
+                <td>12</td>
+                <td>15</td>
+                <td>12</td>
+                <td>15</td>
+                <td>12</td>
+            </tr>
+            <tr>
+                <td>Triceps</td>
+                <td>15</td>
+                <td>12</td>
+                <td>15</td>
+                <td>12</td>
+                <td>15</td>
+                <td>12</td>
+                <td>15</td>
+                <td>12</td>
+                <td>15</td>
+                <td>12</td>
+            </tr>
+            <tr>
+                <td>Przysiad</td>
+                <td>15</td>
+                <td>12</td>
+                <td>15</td>
+                <td>12</td>
+                <td>15</td>
+                <td>12</td>
+                <td>15</td>
+                <td>12</td>
+                <td>15</td>
+                <td>12</td>
+            </tr>
+            <tr>
+                <td>Podciaganie</td>
+                <td>15</td>
+                <td>12</td>
+                <td>15</td>
+                <td>12</td>
+                <td>15</td>
+                <td>12</td>
+                <td>15</td>
+                <td>12</td>
+                <td>15</td>
+                <td>12</td>
+            </tr>
+            </tbody>
+        </table>
+
+    </section>
+</div>
 </body>
 </html>

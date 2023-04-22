@@ -1,6 +1,7 @@
 package pl.borawski.fitapp.config;
 
 import jakarta.validation.Valid;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,7 +16,7 @@ import java.util.List;
 
 @Controller
 public class AuthControllers {
-    private UserService userService;
+    private final UserService userService;
     @GetMapping("/login")
     String loginForm(){
         return "login-form";
@@ -25,10 +26,6 @@ public class AuthControllers {
         this.userService = userService;
     }
 
-    @GetMapping("/")
-    String home(){
-        return "index";
-    }
     @GetMapping("/register")
     String register(Model model){
         UserRegisterDTO user = new UserRegisterDTO();
